@@ -66,6 +66,11 @@ Para acceder a las paginas internas vía la opción **Iniciar sesión** en el si
 ```
 nombre de usuario : isantamaria
 contraseña        : PUDAHUEL23
+grupo             : clientes
+
+nombre de usuario : aperez
+contraseña        : CHAITEN23
+grupo             : trabajadores
 ```
 
 Para acceder al panel de administración de Django, el superusuario disponible es:
@@ -85,3 +90,11 @@ contraseña        : CajaVecina23
 - La pagina dinámica de creación de usuarios (/nuevousuario) ha sido mejorada para capturar los siguientes datos adicionales
     - Nombre
     - Apellido
+
+
+## Añadido Individual 07
+
+- Se han agregado los siguientes archivos:
+    - navbar_clientes.html, home_clientes.html, base_clientes.html : Son archivos de componentes de para las paginas de clientes. También se modifico supportcontactform.html para que usará la plantilla de clientes
+    - home_trabajadores : Es la pagina de acceso solo de trabajadores
+    - 403.html : Pagina de advertencia que ha entrado a una pagina para otros usuarios
