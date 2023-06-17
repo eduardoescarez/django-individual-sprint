@@ -90,7 +90,7 @@ class LoginView(TemplateView):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('internalindex')
+                    return redirect('index')
             form.add_error('username', 'Se han ingresado las credenciales equivocados.')
             return render(request, self.template_name, { 'form': form, 'titulo': 'Acceso al sitio Interno',})
         else:
@@ -100,29 +100,30 @@ class IndexInternoView(TemplateView):
     template_name = 'interno/index.html'
     
     def get(self, request, *args, **kwargs):
+        grupos = request.user.groups.all()
         primer_nombre = request.user.first_name or 'usuario'
         segundo_nombre = request.user.last_name
-        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋',})
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋', 'grupos': grupos})
     
 class HomeClientes(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
+    permission_required = 'mainapp.permiso_clientes'
     template_name = 'interno/home_clientes.html'
 
-    permission_required = "secciones.permiso_clientes"
-
     def get(self, request, *args, **kwargs):
+        grupos = request.user.groups.all()
         primer_nombre = request.user.first_name or 'usuario'
         segundo_nombre = request.user.last_name
-        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋',})
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋', 'grupos': grupos})
 
 class HomeTrabajadores(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
+    permission_required = 'mainapp.permiso_trabajadores'
     template_name = 'interno/home_trabajadores.html'
 
-    permission_required = "secciones.permiso_trabajadores"
-
     def get(self, request, *args, **kwargs):
+        grupos = request.user.groups.all()
         primer_nombre = request.user.first_name or 'usuario'
         segundo_nombre = request.user.last_name
-        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋',})
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋', 'grupos': grupos})
 
 class SupportContactView(TemplateView):
     template_name = 'interno/supportcontactform.html'

@@ -11,17 +11,33 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'users' %}">Usuarios</a></li>
                 {% if user.is_authenticated == False %}
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'newuser' %}">Crear cuenta</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'newuser' %}">Crear cuenta</a></li>
                 {% endif %}
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contacto</a></li>
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'internalindex' %}">Home Interno</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'homeclientes' %}">Home Clientes</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'hometrabajadores' %}">Home Trabajadores</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'supportcontact' %}">Contacto de asistencia</a></li>
-                {% endif %}
-                <li class="nav-item">
-                    {% if user.is_authenticated %}
+                    <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'internalindex' %}">Home Interno</a></li> -->
+                    {% if user.groups.all.count > 0 %}
+                        {% for group in user.groups.all %}
+                            {% if group.name == 'trabajadores' %}
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'hometrabajadores' %}">Home Trabajadores</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if user.groups.all.count > 0 %}
+                        {% for group in user.groups.all %}
+                            {% if group.name == 'clientes' %}
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'homeclientes' %}">Home Clientes</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if user.groups.all.count > 0 %}
+                        {% for group in user.groups.all %}
+                            {% if group.name == 'clientes' %}
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'supportcontact' %}">Contacto de asistencia</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contacto</a></li>
+                    <li class="nav-item">
                         <a href="{% url 'logout' %}" class="nav-link active fw-bold">Cerrar sesión</a>
                     {% else %}
                         <a href="{% url 'login' %}" class="nav-link active fw-bold">Iniciar sesión</a>
