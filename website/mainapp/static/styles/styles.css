@@ -15,6 +15,15 @@ body{
     color: white;
 }
 
+.subtitle-trabajadores {
+    color: rgb(175, 0, 0);
+    
+}
+
+.subtitle-clientes {
+    color: rgb(197, 105, 0);
+}
+
 .formusers{
     font-family: 'Work Sans', sans-serif;
     background-color: rgb(201, 233, 248);

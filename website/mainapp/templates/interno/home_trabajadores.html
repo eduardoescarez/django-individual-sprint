@@ -2,7 +2,87 @@
 {% load static %}
 {% block contenido %}
 
-<h4>Home de trabajadores</h4>
+<h4 class="subtitle-trabajadores text-center">Bienvenido/a al portal de trabajadores, donde podrás ver las últimas consultas, tareas asignadas, y más</h4>
 
+    <div class="card-group m-1 mt-5 mb-3">
+        <div class="card m-2">
+            <img src="https://picsum.photos/id/445/800/200" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title subtitle-trabajadores">Consultas</h5>
+                <div class="container justify-content-center mb-5">
+                    <div class="col">
+                        <table class="table table-light table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Area</th>
+                                    <th scope="col">Asunto</th>
+                                    <th scope="col">Mensaje</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for elemento in asistencias %}
+                                <tr>
+                                    <td>{{ elemento.nombre }}</td>
+                                    <td>{{ elemento.email }}</td>
+                                    <td>{{ elemento.area }}</td>
+                                    <td>{{ elemento.asunto }}</td>
+                                    <td>{{ elemento.mensaje }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-2">
+            <img src="https://picsum.photos/id/7/800/200" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title subtitle-trabajadores">Lista de usuarios</h5>
+                <div class="col">
+                    <table class="table table-light table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in usuarios %}
+                            <tr>
+                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.last_name }}</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-group m-1 mt-1 mb-3">
+        <div class="card m-2">
+            <img src="https://picsum.photos/id/175/800/200" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title subtitle-trabajadores">Tareas asignadas</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Instalación de Django</li>
+                    <li class="list-group-item">Atención técnica sitio web tusmascotas.cl</li>
+                    <li class="list-group-item">Reunión virtual con equipo de TI de TeLoVendo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card m-2">
+            <img src="https://picsum.photos/id/201/800/200" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title subtitle-trabajadores">Notas</h5>
+                <p class="subtitle-trabajadores">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum beatae veniam natus quidem veritatis corrupti, exercitationem at quos vitae sint sit aliquid optio nulla asperiores ad tempore, molestias suscipit voluptatum.</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from mainapp.forms import FormularioConsulta, FormularioLogin, FormularioAsistencia, FormularioCreaUsuarios
 from mainapp.models import FormularioContactoDB, FormularioAsistenciaDB
 from django.contrib.auth import authenticate, login, logout
@@ -90,7 +89,12 @@ class LoginView(TemplateView):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('index')
+                    if request.user.groups.filter(name='trabajadores').exists():
+                        return redirect('hometrabajadores')
+                    elif request.user.groups.filter(name='clientes').exists():
+                        return redirect('homeclientes')
+                    else:
+                        return redirect('index')
             form.add_error('username', 'Se han ingresado las credenciales equivocados.')
             return render(request, self.template_name, { 'form': form, 'titulo': 'Acceso al sitio Interno',})
         else:
@@ -102,8 +106,8 @@ class IndexInternoView(TemplateView):
     def get(self, request, *args, **kwargs):
         grupos = request.user.groups.all()
         primer_nombre = request.user.first_name or 'usuario'
-        segundo_nombre = request.user.last_name
-        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋', 'grupos': grupos})
+        primer_apellido = request.user.last_name
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'primer_apellido' : primer_apellido, 'titulo': f'Hola {primer_nombre} {primer_apellido} 👋', 'grupos': grupos})
     
 class HomeClientes(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
     permission_required = 'mainapp.permiso_clientes'
@@ -112,18 +116,19 @@ class HomeClientes(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         grupos = request.user.groups.all()
         primer_nombre = request.user.first_name or 'usuario'
-        segundo_nombre = request.user.last_name
-        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋', 'grupos': grupos})
+        primer_apellido = request.user.last_name
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'primer_apellido' : primer_apellido, 'titulo': f'Hola {primer_nombre} {primer_apellido} 👋', 'grupos': grupos})
 
 class HomeTrabajadores(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
     permission_required = 'mainapp.permiso_trabajadores'
     template_name = 'interno/home_trabajadores.html'
 
     def get(self, request, *args, **kwargs):
+        asistencias = FormularioAsistenciaDB.objects.all()
+        usuarios   = User.objects.all()
         grupos = request.user.groups.all()
         primer_nombre = request.user.first_name or 'usuario'
-        segundo_nombre = request.user.last_name
-        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋', 'grupos': grupos})
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'titulo': f'Hola {primer_nombre} al portal de trabajadores 👋', 'grupos': grupos, 'asistencias': asistencias, 'usuarios': usuarios})
 
 class SupportContactView(TemplateView):
     template_name = 'interno/supportcontactform.html'

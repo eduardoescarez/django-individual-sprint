@@ -26,12 +26,6 @@
                         {% for group in user.groups.all %}
                             {% if group.name == 'clientes' %}
                                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'homeclientes' %}">Home Clientes</a></li>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    {% if user.groups.all.count > 0 %}
-                        {% for group in user.groups.all %}
-                            {% if group.name == 'clientes' %}
                                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'supportcontact' %}">Contacto de asistencia</a></li>
                             {% endif %}
                         {% endfor %}
