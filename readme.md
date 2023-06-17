@@ -92,9 +92,11 @@ contraseña        : CajaVecina23
     - Apellido
 
 
-## Añadido Individual 07
+## Añadido Sprint
 
 - Se han agregado los siguientes archivos:
     - navbar_clientes.html, home_clientes.html, base_clientes.html : Son archivos de componentes de para las paginas de clientes. También se modifico supportcontactform.html para que usará la plantilla de clientes
-    - home_trabajadores : Es la pagina de acceso solo de trabajadores
+    - home_trabajadores.html : Es la pagina de acceso solo de trabajadores
     - 403.html : Pagina de advertencia que ha entrado a una pagina para otros usuarios
+    - views.py : Se agregaron clases HomeClientes y HomeTrabajadores como los portales del grupo clientes y trabajadores
+    - models.py : Se agrego el modelo Secciones que genera los permisos permiso_clientes, y permiso_trabajadores; que son asignados en cada grupo para, con views.py, dividir los accesos entre los grupos clientes y trabajadores
