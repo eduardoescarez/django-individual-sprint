@@ -4,7 +4,6 @@ from django.contrib.auth.models import User, Group
 
 class FormularioCreaUsuarios(UserCreationForm):
 
-
     first_name = forms.CharField        (label="Nombre", required = True, max_length=30,
                                         error_messages={
                                             'required': 'Tiene que indicar su nombre',
@@ -28,7 +27,7 @@ class FormularioCreaUsuarios(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email', 'group')
+        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'group',  'email',)
 
 
 class FormularioConsulta(forms.Form):

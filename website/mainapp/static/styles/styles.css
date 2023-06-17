@@ -15,6 +15,11 @@ body{
     color: white;
 }
 
+.mainnavbar-clientes {
+    background-color: rgb(175, 0, 0);
+    color: white;
+}
+
 .subtitle-trabajadores {
     color: rgb(175, 0, 0);
     

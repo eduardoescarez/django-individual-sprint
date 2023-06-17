@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from mainapp.forms import FormularioConsulta, FormularioLogin, FormularioAsistencia, FormularioCreaUsuarios
 from mainapp.models import FormularioContactoDB, FormularioAsistenciaDB
 from django.contrib.auth import authenticate, login, logout
@@ -34,7 +34,9 @@ class CreateUsersView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = FormularioCreaUsuarios(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            group = form.cleaned_data['group']
+            group.user_set.add(user)
             mensajes = {'enviado': True, 'resultado': 'El usuario se ha creado correctamente'}
         else:
             mensajes = {'enviado': False, 'resultado': form.errors}
