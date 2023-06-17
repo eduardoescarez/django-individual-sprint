@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="d-flex justify-content-center m-4">
+    {% if mensajes and mensajes.enviado %}
+        <div class="alert alert-success mt-3" role="alert">
+            {{ mensajes.resultado }}
+        </div>
+    {% endif %}
+    {% if mensajes and not mensajes.enviado %}
+        <div class="alert alert-danger mt-3" role="alert">
+            <h5>Errores en los siguientes campos:</h5>
+            {{ mensajes.resultado }}
+        </div>
+    {% endif %}
+    </div>
+
+    <div class="d-flex justify-content-center m-4">
+        <form method="post" action="{% url 'supportcontact' %}" class="formusers p-3" >
+            {% csrf_token %}
+            {% for campo in formulario %}
+            <div class="row m-2">
+                <strong class="col-2 col-form-label"><label for="{{ campo.id_for_label }}">{{ campo.label }}</label></strong>
+                <div class="col-10">
+                    {{ campo }} 
+                    {% if campo.help_text %}
+                        <div class="form-text">{{ campo.help_text }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="d-flex justify-content-center m-4">
+                <button type="submit" class="btn btn-primary">Enviar mensaje de soporte</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

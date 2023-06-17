@@ -1,0 +1,4 @@
+.venv/
+website/website/__pycache__
+website/mainapp/__pycache__
+website/mainapp/migrations/__pycache__

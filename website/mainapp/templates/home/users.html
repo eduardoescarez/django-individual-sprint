@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <img src="https://picsum.photos/id/201/1000/500" class="img-fluid rounded float-end">
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <p>Aquí puede encontrar la información que necesite de nuestros usuarios.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat expedita culpa obcaecati perferendis sint cupiditate! Dolorem laboriosam a quas, accusamus quae nemo consectetur in quia repudiandae. Id perferendis illo saepe!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis ab dolor esse voluptatibus dolore, ex soluta distinctio necessitatibus facere praesentium ratione deleniti voluptate, quam corporis? Libero ullam dolor fugiat iure.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus odit doloremque voluptates beatae reiciendis ipsa rerum iure. Magnam alias dolores debitis, culpa ea numquam ex? Pariatur, velit officiis. Et, explicabo?</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere velit dolore porro fugit? Totam velit blanditiis reiciendis expedita quibusdam ipsum excepturi vitae! Provident saepe recusandae, fugiat eos dolores eaque. In.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container justify-content-center mb-5">
+        <div class="col">
+            <table class="table table-info table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

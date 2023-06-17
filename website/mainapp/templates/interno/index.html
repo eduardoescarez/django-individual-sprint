@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+<h4>Bienvenido al portal interno de WebConstructores donde podrás enterarte de las últimas noticias, realizar consultas, y más</h4>
+
+    <div class="card-group m-1 mt-5 mb-3">
+        <div class="card m-1">
+            <img src="https://picsum.photos/id/668/400/100" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Últimas noticias</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Actualización de servidores</li>
+                    <li class="list-group-item">Bienvenido Marcelo a WebConstructores</li>
+                    <li class="list-group-item">Extensión de soportes de lenguaje</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card m-1">
+            <img src="https://picsum.photos/id/445/400/100" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Novedades</h5>
+                <p class="card-text">Cras nec nibh ac tellus volutpat blandit non ut neque. Integer eu sem nec eros placerat convallis. Ut fringilla hendrerit laoreet. Ut convallis nisl magna, in rutrum nulla volutpat ut. Donec consectetur pharetra nibh sit amet laoreet. Phasellus luctus tortor non molestie luctus. Nam commodo maximus velit vel bibendum.</p>
+            </div>
+        </div>
+        <div class="card m-1">
+            <img src="https://picsum.photos/id/370/400/100" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Tú contacto</h5>
+                <div class="card-header fw-bold">
+                    Anastacia Perez
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Teléfono: 32 265 9850</li>
+                    <li class="list-group-item">Móvil WhatsApp: 9 9850 9856</li>
+                    <li class="list-group-item">Email: aperez@webconstructores.cl</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Work+Sans&display=swap');
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+.mainfooter {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.mainnavbar {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.formusers{
+    font-family: 'Work Sans', sans-serif;
+    background-color: rgb(201, 233, 248);
+    color: rgb(0, 68, 255);
+}
+
+.logo-navbar{
+    width: 30px;
+    height: 30px;
+}
+
+.logo-footer{
+    height: 100px;
+}

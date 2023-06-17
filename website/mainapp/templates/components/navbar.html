@@ -1,0 +1,32 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg mainnavbar" data-bs-theme="dark">
+    <div class="container-fluid">
+        <div><a href="{% url 'index' %}"><img src="{% static 'images/logo.jpg' %}" class="logo-navbar"></a></div>
+        <a class="navbar-brand" href="{% url 'index' %}">WebConstructores</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'users' %}">Usuarios</a></li>
+                {% if user.is_authenticated == False %}
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'newuser' %}">Crear cuenta</a></li>
+                {% endif %}
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contacto</a></li>
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'internalindex' %}">Home Interno</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'supportcontact' %}">Contacto de asistencia</a></li>
+                {% endif %}
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="nav-link active fw-bold">Cerrar sesión</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="nav-link active fw-bold">Iniciar sesión</a>
+                    {% endif %}
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

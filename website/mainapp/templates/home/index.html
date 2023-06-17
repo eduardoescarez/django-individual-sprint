@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+{% include 'components/carousel.html'%}
+
+    <div class="container-fluid">
+        <div class="card-group m-1 mt-5 mb-3">
+            <div class="card m-1">
+                <img src="https://picsum.photos/id/378/500/200" class="card-img-top" alt="Quienes somos">
+                <div class="card-body">
+                    <h5 class="card-title">Quienes somos</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id magna suscipit felis cursus blandit nec quis dui. Pellentesque efficitur, lacus et auctor rhoncus, ante eros ultrices odio, et convallis ligula velit eu nisi. Curabitur facilisis rhoncus porttitor. Integer mattis eros ligula, non viverra mi tincidunt eget. Aliquam ut neque vitae massa finibus dictum. Etiam at ligula dui. Morbi semper, nunc at pharetra interdum, sem lorem fermentum mi, id vestibulum felis neque ac neque.</p>
+                </div>
+            </div>
+            <div class="card m-1">
+                <img src="https://picsum.photos/id/370/500/200" class="card-img-top" alt="Que hacemos">
+                <div class="card-body">
+                    <h5 class="card-title">Que hacemos</h5>
+                    <p class="card-text">Cras nec nibh ac tellus volutpat blandit non ut neque. Integer eu sem nec eros placerat convallis. Ut fringilla hendrerit laoreet. Ut convallis nisl magna, in rutrum nulla volutpat ut. Donec consectetur pharetra nibh sit amet laoreet. Phasellus luctus tortor non molestie luctus. Nam commodo maximus velit vel bibendum.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Fusce lobortis dapibus nulla eget molestie.</li>
+                        <li class="list-group-item">Nullam suscipit fringilla hendrerit.</li>
+                        <li class="list-group-item">Donec pellentesque lobortis sapien nec condimentum.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card m-1">
+                <img src="https://picsum.photos/id/348/500/200" class="card-img-top" alt="Donde estamos">
+                <div class="card-body">
+                    <h5 class="card-title">Donde estamos</h5>
+                    <p class="card-text">Quisque vitae volutpat erat, ut scelerisque eros. In interdum vitae nisl in facilisis. Cras nec lobortis mi, nec aliquam augue. Curabitur facilisis velit venenatis ante consequat vulputate. Suspendisse eu ex mollis, finibus nulla a, rhoncus ex.</p>
+                    <div class="d-flex justify-content-center">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2109.92898054056!2d-71.51842564836319!3d-33.04247434783809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2scl!4v1686667111686!5m2!1ses-419!2scl" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
