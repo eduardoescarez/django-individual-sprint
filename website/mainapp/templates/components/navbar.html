@@ -16,6 +16,8 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contacto</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'internalindex' %}">Home Interno</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'homeclientes' %}">Home Clientes</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'hometrabajadores' %}">Home Trabajadores</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'supportcontact' %}">Contacto de asistencia</a></li>
                 {% endif %}
                 <li class="nav-item">

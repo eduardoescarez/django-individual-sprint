@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth.decorators import login_required
 from django.urls import path
-from mainapp.views import IndexView, UsersView, CreateUsersView, ContactView, LoginView, IndexInternoView, SupportContactView
+from mainapp.views import IndexView, UsersView, CreateUsersView, ContactView, LoginView, IndexInternoView, SupportContactView, HomeClientes, HomeTrabajadores
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +30,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('internal/index', login_required(IndexInternoView.as_view()), name='internalindex'),
     path('internal/support', SupportContactView.as_view(), name='supportcontact'),
+    path('internal/homeclientes', HomeClientes.as_view(), name='homeclientes'),
+    path('internal/hometrabajadores', HomeTrabajadores.as_view(), name='hometrabajadores'),
 ]

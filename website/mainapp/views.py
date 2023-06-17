@@ -7,6 +7,7 @@ from mainapp.models import FormularioContactoDB, FormularioAsistenciaDB
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 # Create your views here.
@@ -102,7 +103,26 @@ class IndexInternoView(TemplateView):
         primer_nombre = request.user.first_name or 'usuario'
         segundo_nombre = request.user.last_name
         return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋',})
+    
+class HomeClientes(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
+    template_name = 'interno/home_clientes.html'
 
+    permission_required = "secciones.permiso_clientes"
+
+    def get(self, request, *args, **kwargs):
+        primer_nombre = request.user.first_name or 'usuario'
+        segundo_nombre = request.user.last_name
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋',})
+
+class HomeTrabajadores(PermissionRequiredMixin, LoginRequiredMixin, TemplateView):
+    template_name = 'interno/home_trabajadores.html'
+
+    permission_required = "secciones.permiso_trabajadores"
+
+    def get(self, request, *args, **kwargs):
+        primer_nombre = request.user.first_name or 'usuario'
+        segundo_nombre = request.user.last_name
+        return render(request, self.template_name, {'primer_nombre' : primer_nombre, 'segundo_nombre' : segundo_nombre, 'titulo': f'Hola {primer_nombre} {segundo_nombre} 👋',})
 
 class SupportContactView(TemplateView):
     template_name = 'interno/supportcontactform.html'
